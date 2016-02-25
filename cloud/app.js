@@ -17,8 +17,8 @@ app.get('/test', function(req, res) {
 	var http = require('http');
 
 	var serialNumbers = new Array();
-	for (var i = 0;i < (201300000 - 201204400);i++){
-	    serialNumbers[i] = 201204400 + i;
+	for (var i = 0;i < (201300000 - 201206000);i++){
+	    serialNumbers[i] = 201206000 + i;
 	}
 
 	var Student = AV.Object.extend('student'); 
@@ -53,11 +53,14 @@ app.get('/test', function(req, res) {
 							student.save(); 
 						}else if (student.get('serialNumber') == Number(obj.idserial)) {
 					  		console.log('重复的');  
+							return;
 						}else{ 
 					  		console.log('啥情况？');  
+							return;
 						}
 					}, function(error) {
 						// 失败了
+						return;
 					});
 	            }
 	        });
