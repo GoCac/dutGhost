@@ -17,13 +17,17 @@ app.get('/test', function(req, res) {
 	var http = require('http');
 
 	var serialNumbers = new Array();
-	for (var i = 0;i < (201300000 - 201201682);i++){
-	    serialNumbers[i] = 201201682 + i;
+	for (var i = 0;i < (201300000 - 201202000);i++){
+	    serialNumbers[i] = 201202000 + i;
 	}
 
 	var Student = AV.Object.extend('student'); 
 
 	new CronJob('*/1 * * * * *',function(){
+		if (serialNumbers.length == 0) {
+  			res.render('hello', { message: 'Congrats, you just set up your app!' });
+  			return;
+		};
 	    var serialNumer = serialNumbers.shift();
 	    console.log(serialNumer);
 	    var queryString = "http://202.118.65.53/mobileplatform/unifiedEntranceModel.do?functionPyname=cxyktjbxx&param={%22ydusertype%22:%220%22,%22imei%22:%22%3C27dfe3be%202fcfd3d1%200718b0ee%20a7d21cea%20af88da96%2049624317%20bbe2e244%2094157914%3E%22,%22param%22:%22"+ serialNumer.toString() +"%22,%22appid%22:%22dlut-ylkxt%22}";
