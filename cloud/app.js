@@ -37,17 +37,19 @@ app.get('/test', function(req, res) {
 	            	console.log(obj.username);
 					var query = new AV.Query(Student);  
        				query.equalTo("serialNumber", Number(obj.idserial));
-       				query.find().then(function(result) {
+       				query.find().then(function(results) {
 						// 成功获得实例
-					  	console.log('重复的');  
-						if (result.get('serialNumber') == Number(obj.idserial)) {
-					  		console.log('重复的');  
-						}else{
+						var student = results[0];
+						if (!student) {
 							console.log('初次添加');       
 							var student = new Student(); 
 							student.set("name",obj.username);
 							student.set("serialNumber",Number(obj.idserial));
-							student.save();  
+							student.save(); 
+						}else if (student.get('serialNumber') == Number(obj.idserial)) {
+					  		console.log('重复的');  
+						}else{ 
+					  		console.log('啥情况？');  
 						}
 					}, function(error) {
 						// 失败了
