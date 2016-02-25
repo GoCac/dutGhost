@@ -1,0 +1,1 @@
+Cloud code project for DUT_Student_Info. Cloud Code Guide: https://cn.avoscloud.com/docs/cloud_code_guide.html
