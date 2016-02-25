@@ -17,8 +17,8 @@ app.get('/test', function(req, res) {
 	var http = require('http');
 
 	var serialNumbers = new Array();
-	for (var i = 0;i < (201300000 - 201202000);i++){
-	    serialNumbers[i] = 201202000 + i;
+	for (var i = 0;i < (201300000 - 201204400);i++){
+	    serialNumbers[i] = 201204400 + i;
 	}
 
 	var Student = AV.Object.extend('student'); 
