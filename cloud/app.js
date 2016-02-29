@@ -15,7 +15,7 @@ app.get('/hello', function(req, res) {
 app.get('/test', function(req, res) {
 	var CronJob = require('cron').CronJob;
 	var http = require('http');
-	var start = req.query.start;
+	var start = Number(req.query.start);
 	var serialNumbers = new Array();
 	for (var i = 0;i < (201300000 - start);i++){
 	    serialNumbers[i] = start + i;
